@@ -30,16 +30,22 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = [    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "rest_framework",
+    "corsheaders",
+    "prenotazioni",
+    "utenti",
+    "core",
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -50,6 +56,22 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mirko_incordatore.urls'
+
+# Setting del REST framework
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+    "DEFAULT_PERMISSION_CLASSES": (
+        "rest_framework.permissions.isAuthenticatedOrReadOnly",
+    ),
+}
+
+# Origini permesse per il frontend
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000", # URL del frontend
+]
+
 
 TEMPLATES = [
     {
