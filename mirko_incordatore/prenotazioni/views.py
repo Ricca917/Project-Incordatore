@@ -27,8 +27,8 @@ class PrenotazioneCreate(generics.CreateAPIView): # endpoint per creare una pren
 
 class PrenotazioneList(generics.ListCreateAPIView): # endpoint per visualizzare tutte le prenotazioni (admin)
     queryset = Prenotazione.objects.all()
-    serualizer_class = PrenotazioneSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = PrenotazioneSerializer
+    permission_classes = [permissions.IsAdminUser]
     
     def perform_create(self, serializer):
         serializer.save(cliente=self.request.user)
@@ -37,7 +37,8 @@ class PrenotazioneList(generics.ListCreateAPIView): # endpoint per visualizzare 
 class PrenotazioneListUser(generics.ListAPIView): # endpoint per visualizzare le prenotazioni dell'utente autenticato
     serializer_class = PrenotazioneSerializer
     permission_classes = [permissions.IsAuthenticated]
-    
+
+
     def get_queryset(self):
         return Prenotazione.objects.filter(cliente= self.request.user)
     
