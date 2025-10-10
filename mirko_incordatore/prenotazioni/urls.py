@@ -9,5 +9,4 @@ urlpatterns = [
     path("prenotazioni/user/", PrenotazioneListUser.as_view(), name="prenotazioni-user"),
     path("prenotazioni/view/", PrenotazioneList.as_view(), name="prenotazioni-view"),
     
-    
 ]
