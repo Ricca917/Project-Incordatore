@@ -5,6 +5,7 @@
 
 {% block content %}
 <h2>Punti di Ritiro</h2>
+
 <ul class="list-group">
     {% for punto in punti %}
         <li class="list-group-item">
@@ -12,4 +13,5 @@
         </li>
     {% endfor %}
 </ul>
+<a href="{% url 'home' %}" class="btn btn-secondary mb-3">Torna alla Home</a>
 {% endblock %}

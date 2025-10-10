@@ -4,21 +4,22 @@
     <meta charset="UTF-8">
     <title>{% block title %}Mirko Incordatore{% endblock %}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Messaggi centrati come overlay */
+        #global-messages {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1050; /* sopra il contenuto */
+            min-width: 300px;
+            max-width: 90%;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
     <div class="container">
-        {% if messages %}
-            <div class="container mt-3">
-                {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                        {{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                {% endfor %}
-            </div>
-        {% endif %}
-        
         <a class="navbar-brand" href="/">Mirko Incordatore</a>
         <ul class="navbar-nav ms-auto">
             <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
@@ -40,13 +41,27 @@
     </div>
 </nav>
 
-    <div class="container">
-        {% block content %}
-        {% endblock %}
-    </div>
+<!-- Messaggi centrati -->
+{% if messages %}
+<div id="global-messages">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show text-center" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Chiudi"></button>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
 
-    <footer class="text-center mt-4 mb-4">
-        &copy; 2025 Mirko Incordatore
-    </footer>
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<footer class="text-center mt-4 mb-4">
+    &copy; 2025 Mirko Incordatore
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

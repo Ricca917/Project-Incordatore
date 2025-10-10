@@ -1,10 +1,10 @@
-<!-- core/templates/core/prenotazioni_utente.html -->
 {% extends 'core/base.html' %}
 
 {% block title %}Le tue Prenotazioni{% endblock %}
 
 {% block content %}
 <h2>Le tue Prenotazioni</h2>
+<a href="{% url 'crea-prenotazione' %}" class="btn btn-primary">Nuova Prenotazione</a>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -26,11 +26,10 @@
         </tr>
         {% empty %}
         <tr>
-            <td colspan="4">Non hai ancora prenotazioni</td>
+            <td colspan="5">Non hai ancora prenotazioni</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-
-<a href="/prenotazioni/crea/" class="btn btn-primary">Nuova Prenotazione</a>
+<a href="{% url 'home' %}" class="btn btn-secondary mb-3">Torna alla Home</a>
 {% endblock %}
