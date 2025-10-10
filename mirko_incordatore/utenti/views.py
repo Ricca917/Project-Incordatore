@@ -1,13 +1,14 @@
 from django.shortcuts import render # importa il metodo render per le viste basate su funzioni
-from rest_framework import generics 
+from rest_framework import generics, permissions 
 from django.contrib.auth import get_user_model # importa il modello utente attivo nel progetto Django
-from .serializers import UserSerializer
+from .serializers import UserSerializer, UserProfileSerializer
 
 User = get_user_model()
 
 class RegisterView(generics.CreateAPIView): # Endpoint per la registrazione degli utenti
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    permission_classes = [permissions.AllowAny] # Permette l'accesso a tutti, in modo da potersi registrare
 
 class UserListView(generics.ListAPIView): # Endpoint per la lista degli utenti
     queryset = User.objects.all()
@@ -19,7 +20,8 @@ class UserDetailView(generics.RetrieveUpdateDestroyAPIView): # Endpoint per i de
 
 
 class UserProfileView(generics.RetrieveUpdateAPIView): # Endpoint per visualizzare e aggiornare il profilo dell'utente autenticato
-    serializer_class = UserSerializer
+    serializer_class = UserProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
     
     def get_object(self):
-        return self.request.user
+        return self.request.user # Restituisce l'utente autenticato 

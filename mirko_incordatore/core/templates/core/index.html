@@ -1,0 +1,13 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Benvenuto{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5">
+    <h1>Benvenuto su Mirko Incordatore!</h1>
+    <a href="{% url 'profilo' %}" class="btn btn-primary">Vai al profilo</a>
+    <a href="{% url 'punti-ritiro' %}" class="btn btn-secondary">Punti Ritiro</a>
+    <a href="{% url 'servizi' %}" class="btn btn-secondary">Servizi</a>
+    <a href="{% url 'prenotazioni-utente' %}" class="btn btn-success">Le tue Prenotazioni</a>
+</div>
+{% endblock %}

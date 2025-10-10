@@ -1,0 +1,32 @@
+<!-- core/templates/core/crea_prenotazione.html -->
+{% extends 'core/base.html' %}
+
+{% block title %}Nuova Prenotazione{% endblock %}
+
+{% block content %}
+<h2>Nuova Prenotazione</h2>
+<form method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label>Punto Ritiro</label>
+        <select class="form-select" name="punto_ritiro">
+            {% for p in punti %}
+            <option value="{{ p.id }}">{{ p.nome }} - {{ p.indirizzo }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Servizio</label>
+        <select class="form-select" name="servizio">
+            {% for s in servizi %}
+            <option value="{{ s.id }}">{{ s.nome }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Data e Ora</label>
+        <input type="datetime-local" class="form-control" name="data_ora" required>
+    </div>
+    <button type="submit" class="btn btn-success">Prenota</button>
+</form>
+{% endblock %}

@@ -1,0 +1,15 @@
+<!-- core/templates/core/punti_ritiro.html -->
+{% extends 'core/base.html' %}
+
+{% block title %}Punti di Ritiro{% endblock %}
+
+{% block content %}
+<h2>Punti di Ritiro</h2>
+<ul class="list-group">
+    {% for punto in punti %}
+        <li class="list-group-item">
+            <strong>{{ punto.nome }}</strong> - {{ punto.indirizzo }}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

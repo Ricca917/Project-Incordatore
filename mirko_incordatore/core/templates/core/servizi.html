@@ -1,0 +1,15 @@
+<!-- core/templates/core/servizi.html -->
+{% extends 'core/base.html' %}
+
+{% block title %}Servizi{% endblock %}
+
+{% block content %}
+<h2>Servizi Disponibili</h2>
+<ul class="list-group">
+    {% for servizio in servizi %}
+        <li class="list-group-item">
+            <strong>{{ servizio.nome }}</strong> - {{ servizio.descrizione }}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

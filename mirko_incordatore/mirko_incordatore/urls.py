@@ -24,5 +24,5 @@ urlpatterns = [
     path('api/utenti/', include("utenti.urls")), # include le rotte dell'app utenti relativi alla registrazione
     path('api/auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'), # Endpoint per ottenere il token JWT
     path('api/auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'), # Endpoint per refreshare il token JWT
-    
+    path("", include("core.urls")), # include le rotte dell'app core
 ]
