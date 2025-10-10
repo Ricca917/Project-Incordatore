@@ -5,6 +5,7 @@
 {% block content %}
 <div class="container mt-5">
     <h2>Modifica il tuo Profilo</h2>
+    <button type="submit" class="btn btn-success mt-2">Aggiorna Profilo</button>
     <form method="post" action="{% url 'user-profile' %}" novalidate>
         {% csrf_token %}
         <div class="mb-3">
@@ -16,8 +17,8 @@
             <label for="email" class="form-label">Email</label>
             <input type="email" name="email" id="email" class="form-control" value="{{ user.email }}" required>
         </div>
-
-        <button type="submit" class="btn btn-success mt-2">Aggiorna Profilo</button>
+        
+        <a href="{% url 'home' %}" class="btn btn-home">Torna alla Home</a>
     </form>
 </div>
 {% endblock %}

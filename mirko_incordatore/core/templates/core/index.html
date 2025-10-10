@@ -3,17 +3,40 @@
 {% block title %}Benvenuto{% endblock %}
 
 {% block content %}
-<div class="text-center mt-5">
-    <h1>Benvenuto su Mirko Incordatore!</h1>
-    <h2>Il servizio di fiducia per l'incordatura e la manutenzione delle racchette da tennis</h2>
+<div class="container mt-5">
+    <div class="row align-items-center">        
+        <div class="col-md-4 text-center mb-3 mb-md-0">
+            <img src="https://www.meftennisevents.it/beta/wp-content/uploads/2021/12/mirko.png" 
+                alt="Mirko Incordatore" 
+                class="img-fluid rounded" 
+                style="max-width: 100%;">
+        </div>
 
-    {% if user.is_authenticated %}
-        <a href="{% url 'profilo' %}" class="btn btn-primary">Vai al profilo</a>
-        <a href="{% url 'prenotazioni-utente' %}" class="btn btn-success">Le tue Prenotazioni</a>
-    {% endif %}
-
-    <a href="{% url 'punti-ritiro' %}" class="btn btn-secondary">Punti Ritiro</a>
-    <a href="{% url 'servizi' %}" class="btn btn-secondary">Servizi</a>
+        
+        <div class="col-md-8">
+            <h1>Mirko Latino Stringer</h1>
+            <h2>Precisione e passione per ogni racchetta</h2>
+            <p>                
+                Ho trasformato la passione in professione diventando un riferimento per gli amanti del gioco. <br>
+                Dal 2018 gestisco un laboratorio a Lucca<br>
+                Lavoro racchetta viene trattata con cura, precisione e attenzione ai dettagli.
+            </p>            
+            <p>Contatti: 
+                <ul>
+                    <li>Telefono: <a href="tel:+393474054634">+39 347 4054634</a></li>
+                    <li>Email: <a href="mailto:mirko.stringer@example.com">mirko.stringer@example.com</a><br></li>
+                </ul>
+            </p>
+            
+            {% if user.is_authenticated %}
+            <a href="{% url 'profilo' %}" class="btn btn-primary">Vai al profilo</a>
+            <a href="{% url 'prenotazioni-utente' %}" class="btn btn-success">Le tue Prenotazioni</a>
+            {% endif %}
+            
+            <a href="{% url 'servizi' %}" class="btn btn-secondary">Servizi</a>
+            <a href="{% url 'punti-ritiro' %}" class="btn btn-secondary">Punti Ritiro</a>
+            
+        </div>
+    </div>
 </div>
-
 {% endblock %}
