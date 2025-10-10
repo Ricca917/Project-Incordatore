@@ -1,27 +1,37 @@
-from django.shortcuts import render # importa il metodo render per le viste basate su funzioni
-from rest_framework import generics, permissions 
-from django.contrib.auth import get_user_model # importa il modello utente attivo nel progetto Django
-from .serializers import UserSerializer, UserProfileSerializer
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib import messages
 
-User = get_user_model()
+def register_html_view(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            messages.success(request, "Registrazione avvenuta con successo!")
+            return redirect("home")
+        else:
+            messages.error(request, "Correggi gli errori nel modulo.")
+    else:
+        form = UserCreationForm()
+    return render(request, "core/register.html", {"form": form})
 
-class RegisterView(generics.CreateAPIView): # Endpoint per la registrazione degli utenti
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [permissions.AllowAny] # Permette l'accesso a tutti, in modo da potersi registrare
+def login_html_view(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            messages.success(request, f"Benvenuto {user.username}!")
+            return redirect("home")
+        else:
+            messages.error(request, "Username o password non corretti.")
+    else:
+        form = AuthenticationForm()
+    return render(request, "core/login.html", {"form": form})
 
-class UserListView(generics.ListAPIView): # Endpoint per la lista degli utenti
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-class UserDetailView(generics.RetrieveUpdateDestroyAPIView): # Endpoint per i dettagli, aggiornamento e cancellazione di un utente specifico
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-
-class UserProfileView(generics.RetrieveUpdateAPIView): # Endpoint per visualizzare e aggiornare il profilo dell'utente autenticato
-    serializer_class = UserProfileSerializer
-    permission_classes = [permissions.IsAuthenticated]
-    
-    def get_object(self):
-        return self.request.user # Restituisce l'utente autenticato 
+def logout_html_view(request):
+    logout(request)
+    messages.info(request, "Logout effettuato correttamente.")
+    return redirect("home")

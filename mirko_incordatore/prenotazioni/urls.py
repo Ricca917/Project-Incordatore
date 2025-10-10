@@ -1,12 +1,9 @@
 from django.urls import path
-from .views import PuntoRitiroList, ServizioList, PrenotazioneCreate, PrenotazioneListUser, PrenotazioneList
+from core.views import punti_ritiro_view, servizi_view, prenotazioni_utente_view, crea_prenotazione_view
 
 urlpatterns = [
-    
-    path("punti-ritiro/", PuntoRitiroList.as_view(), name="punti-ritiro"), 
-    path("servizi/", ServizioList.as_view(), name="servizi"),
-    path("prenotazioni/create/", PrenotazioneCreate.as_view(), name="prenotazioni-create"),
-    path("prenotazioni/user/", PrenotazioneListUser.as_view(), name="prenotazioni-user"),
-    path("prenotazioni/view/", PrenotazioneList.as_view(), name="prenotazioni-view"),
-    
+    path("punti-ritiro/", punti_ritiro_view, name="punti-ritiro"),
+    path("servizi/", servizi_view, name="servizi"),
+    path("prenotazioni/", prenotazioni_utente_view, name="prenotazioni-utente"),
+    path("prenotazioni/crea/", crea_prenotazione_view, name="crea-prenotazione"),
 ]

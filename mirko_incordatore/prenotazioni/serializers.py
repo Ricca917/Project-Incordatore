@@ -17,6 +17,19 @@ class ServizioSerializer(serializers.ModelSerializer):
 class PrenotazioneSerializer(serializers.ModelSerializer):
     class Meta:
         model = Prenotazione
-        fields = "__all__"
-        read_only_fields = ("cliente", "stato", "creato_il", "aggiornato_il")
-        
+        fields = [
+            "id",
+            "cliente",
+            "nome_cliente",
+            "telefono",
+            "servizio",
+            "punto_ritiro",
+            "data_preferita",
+            "ora_preferita",
+            "marca_racchetta",
+            "note",
+            "stato",
+            "creato_il",
+            "aggiornato_il",
+        ]
+        read_only_fields = ["cliente", "creato_il", "aggiornato_il"]

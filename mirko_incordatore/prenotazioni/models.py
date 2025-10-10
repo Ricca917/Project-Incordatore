@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 
-class PuntoRitiro(models.Model):
+class PuntoRitiro(models.Model): # modello per i punti di ritiro
     nome = models.CharField(max_length=100)
     indirizzo = models.CharField(max_length=255, blank=True)
     note = models.TextField(blank=True)
@@ -15,9 +15,9 @@ class PuntoRitiro(models.Model):
         return self.nome
 
 
-class Servizio(models.Model):
-    nome = models.CharField(max_length=100)
-    durata_minuti = models.PositiveIntegerField()
+class Servizio(models.Model): # modello per i servizi offerti
+    nome = models.CharField(max_length=100)    
+    descrizione = models.TextField(blank=True) 
     prezzo = models.DecimalField(max_digits=7, decimal_places=2)
     
     class Meta:
@@ -25,10 +25,10 @@ class Servizio(models.Model):
         verbose_name_plural = "Servizi"
 
     def __str__(self):
-        return self.nome
+        return f"{self.nome} - €{self.prezzo}"
 
 
-class Prenotazione(models.Model):
+class Prenotazione(models.Model): # modello per le prenotazioni
     STATI = [
         ("in_attesa", "In attesa"),
         ("confermata", "Confermata"),

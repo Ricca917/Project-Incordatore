@@ -51,8 +51,7 @@ ritiro prodotto e pagamento in modo facile e intuivito
 ### 7. Note
 
     - V 1.0: sarà fatta esclusivamente coma backend Django
-    - V 2.0: implementare una IA per il suppporto al cliente 
-    - V 3.0: frontend dedicato in React
+    - V 2.0: frontend dedicato in React
     - V x.0: versione mobile usando React Native
 
 ---

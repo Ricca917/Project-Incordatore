@@ -1,44 +1,39 @@
-from django.shortcuts import render 
-from rest_framework import generics, permissions  
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .models import PuntoRitiro, Servizio, Prenotazione
-from .serializers import PuntoRitiroSerializer, ServizioSerializer, PrenotazioneSerializer 
+from .forms import PrenotazioneForm
 
-# Create your views here.
+def punti_ritiro_view(request):
+    punti = PuntoRitiro.objects.all()
+    return render(request, "core/punti_ritiro.html", {"punti": punti})
 
+def servizi_view(request):
+    servizi = Servizio.objects.all()
+    return render(request, "core/servizi.html", {"servizi": servizi})
 
-class PuntoRitiroList(generics.ListCreateAPIView): # endpoint relativo ai punti di ritiro
-    queryset = PuntoRitiro.objects.all()
-    serializer_class = PuntoRitiroSerializer
+@login_required
+def prenotazioni_utente_view(request):
+    prenotazioni = Prenotazione.objects.filter(cliente=request.user)
+    return render(request, "core/prenotazioni_utente.html", {"prenotazioni": prenotazioni})
 
+@login_required
+def crea_prenotazione_view(request):
+    punti = PuntoRitiro.objects.all()
+    servizi = Servizio.objects.all()
 
-class ServizioList(generics.ListCreateAPIView): # endpoint relativo ai servizi
-    queryset = Servizio.objects.all()
-    serializer_class = ServizioSerializer
+    if request.method == "POST":
+        form = PrenotazioneForm(request.POST)
+        if form.is_valid():
+            prenotazione = form.save(commit=False)
+            prenotazione.cliente = request.user
+            prenotazione.nome_cliente = request.user.username
+            prenotazione.save()
+            messages.success(request, "Prenotazione creata con successo!")
+            return redirect("prenotazioni-utente")
+        else:
+            messages.error(request, "Errore nella creazione della prenotazione. Controlla i dati inseriti.")
+    else:
+        form = PrenotazioneForm()
 
-
-class PrenotazioneCreate(generics.CreateAPIView): # endpoint per creare una prenotazione
-    queryset = Prenotazione.objects.all()
-    serializer_class = PrenotazioneSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-    def perform_create(self, serializer):
-        serializer.save(cliente=self.request.user)
-
-
-class PrenotazioneList(generics.ListCreateAPIView): # endpoint per visualizzare tutte le prenotazioni (admin)
-    queryset = Prenotazione.objects.all()
-    serializer_class = PrenotazioneSerializer
-    permission_classes = [permissions.IsAdminUser]
-    
-    def perform_create(self, serializer):
-        serializer.save(cliente=self.request.user)
-
-
-class PrenotazioneListUser(generics.ListAPIView): # endpoint per visualizzare le prenotazioni dell'utente autenticato
-    serializer_class = PrenotazioneSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-
-    def get_queryset(self):
-        return Prenotazione.objects.filter(cliente= self.request.user)
-    
+    return render(request, "core/crea_prenotazione.html", {"form": form, "punti": punti, "servizi": servizi})

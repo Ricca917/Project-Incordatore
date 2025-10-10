@@ -11,7 +11,8 @@
             <th>ID</th>
             <th>Punto Ritiro</th>
             <th>Servizio</th>
-            <th>Data/Ora</th>
+            <th>Data</th>
+            <th>Ora</th>
         </tr>
     </thead>
     <tbody>
@@ -20,7 +21,8 @@
             <td>{{ p.id }}</td>
             <td>{{ p.punto_ritiro.nome }}</td>
             <td>{{ p.servizio.nome }}</td>
-            <td>{{ p.data_ora }}</td>
+            <td>{{ p.data_preferita }}</td>
+            <td>{{ p.ora_preferita }}</td>
         </tr>
         {% empty %}
         <tr>

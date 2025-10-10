@@ -1,6 +1,12 @@
-# core/urls.py
 from django.urls import path
-from .views import index, punti_ritiro_view, servizi_view, profilo_view, prenotazioni_utente_view, crea_prenotazione_view
+from .views import (
+    index,
+    punti_ritiro_view,
+    servizi_view,
+    profilo_view,
+    prenotazioni_utente_view,
+    crea_prenotazione_view,
+)
 
 urlpatterns = [
     path("", index, name="home"),

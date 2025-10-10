@@ -8,24 +8,45 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
     <div class="container">
+        {% if messages %}
+            <div class="container mt-3">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
         <a class="navbar-brand" href="/">Mirko Incordatore</a>
         <ul class="navbar-nav ms-auto">
             <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'profilo' %}">Profilo</a></li>
+
+            {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'profilo' %}">Profilo</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout-html' %}">Logout</a></li>
+            {% else %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'login-html' %}">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'register-html' %}">Registrati</a></li>
+            {% endif %}
+
             <li class="nav-item"><a class="nav-link" href="{% url 'punti-ritiro' %}">Punti Ritiro</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'servizi' %}">Servizi</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'prenotazioni-utente' %}">Le tue Prenotazioni</a></li>
+            {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'prenotazioni-utente' %}">Le tue Prenotazioni</a></li>
+            {% endif %}
         </ul>
     </div>
 </nav>
 
-<div class="container">
-    {% block content %}
-    {% endblock %}
-</div>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
 
-<footer class="text-center mt-4 mb-4">
-    &copy; 2025 Mirko Incordatore
-</footer>
+    <footer class="text-center mt-4 mb-4">
+        &copy; 2025 Mirko Incordatore
+    </footer>
 </body>
 </html>

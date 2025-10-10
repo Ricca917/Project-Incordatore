@@ -1,15 +1,22 @@
-<!-- core/templates/core/servizi.html -->
 {% extends 'core/base.html' %}
 
 {% block title %}Servizi{% endblock %}
 
 {% block content %}
-<h2>Servizi Disponibili</h2>
-<ul class="list-group">
-    {% for servizio in servizi %}
-        <li class="list-group-item">
-            <strong>{{ servizio.nome }}</strong> - {{ servizio.descrizione }}
-        </li>
-    {% endfor %}
-</ul>
+<div class="container mt-4">
+    <h2>Servizi disponibili</h2>
+    <div class="row">
+        {% for servizio in servizi %}
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ servizio.nome }}</h5>
+                    <p class="card-text">{{ servizio.descrizione }}</p>
+                    <p class="card-text"><strong>Prezzo: €{{ servizio.prezzo }}</strong></p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
