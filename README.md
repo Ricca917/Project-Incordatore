@@ -64,20 +64,24 @@ ritiro prodotto e pagamento in modo facile e intuivito
 
 3. Attivare il virtual environment con  **source .venv/Scripts/activate** (windows) 
 
-   oppure  **source .venv/bin/activate** (linux/macOS)
+   - oppure  **source .venv/bin/activate** (linux/macOS)
 
-4. Installare Django con **pip install django**
+4. Installare Django e pacchetti aggiuntivi usando il comando **pip install -r requirements.txt** 
 
-5. Installare pacchetti aggiuntivi Django con:
+    - **requirements.txt** è il file di riferimento contenente la lista dei pacchetti installati e deve 
+    essere aggiornato ogni volta che ne viene aggiunto uno con **pip freeze > requirements.txt**
 
-   **pip install django djangorestframework django-cors-headers djangorestframework-simplejwt python-dotenv whitenoise**
+5. Creare le tabelle del Database con **python manage.py migrate**
 
-   - **djangorestframework** -> per le chiamate API REST
-   - **django-cors-headers** -> per gestire il CORS
-   - **djangorestframework**-simplejwt -> autenticazione tramite JWT
-   - **python-dotenv** -> variabili d'ambiente (chiavi API, credenziali, configurazioni ecc..)
-   - **whitenoise** -> per i file statici (CSS,JS, immagini)
+6. Recuperare i dati del Database dal backup con **python manage.py dumpdata > backup.json** 
 
-5. Entrare nella directory del progetto e avviarlo con **python manage.py runserver**
+7. Popolare il Database con **python manage.py loaddata backup.json**
 
+8. Entrare nella directory Project-mirko-incordato/mirko_incordatore e avviare il progetto con **python manage.py runserver**
+
+
+NOTE:
+    - il recupero del db viene fatto solamente perchè non ci sono dati sensibili al suo interno,
+    solamente dati inventati a scopo di test.
+    In una situazione reale questo tipo di pratica non verrà applicata
 ---

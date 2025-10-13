@@ -4,7 +4,10 @@
 
 {% block content %}
 <h2>Il tuo Profilo</h2>
+<a href="{% url 'user-profile' %}" class="btn btn-primary">Modifica profilo</a>
 <p><strong>Username:</strong> {{ user.username }}</p>
 <p><strong>Email:</strong> {{ user.email }}</p>
-<a href="{% url 'user-profile' %}" class="btn btn-primary">Modifica profilo</a>
+
+<a href="{% url 'home' %}" class="btn btn-home">Torna alla Home</a>
+
 {% endblock %}
