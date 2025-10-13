@@ -58,7 +58,7 @@ ritiro prodotto e pagamento in modo facile e intuivito
 
 ### Istruzioni per l'uso
 
-1. Clonare repository con **git clone git@github.com:Ricca917/Project-mirko-incordatore.git**
+1. Clonare repository con *git clone git@github.com:Ricca917/Project-mirko-incordatore.git*
 
 2. Impostare e attivare il virtual environment con **python - m venv .venv** 
 
@@ -77,7 +77,7 @@ ritiro prodotto e pagamento in modo facile e intuivito
 
 7. Popolare il Database con **python manage.py loaddata backup.json**
 
-8. Entrare nella directory Project-mirko-incordato/mirko_incordatore e avviare il progetto con **python manage.py runserver**
+8. Entrare nella directory *Project-mirko-incordato/mirko_incordatore* e avviare il progetto con **python manage.py runserver**
 
 
 NOTE:
