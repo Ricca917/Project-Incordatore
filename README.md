@@ -84,4 +84,5 @@ NOTE:
     - il recupero del db viene fatto solamente perchè non ci sono dati sensibili al suo interno,
     solamente dati inventati a scopo di test.
     In una situazione reale questo tipo di pratica non verrà applicata
+
 ---

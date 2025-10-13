@@ -23,18 +23,25 @@
             </p>            
             <p>Contatti: 
                 <ul>
-                    <li>Telefono: <a href="tel:+393474054634">+39 333 1234567</a></li>
+                    <li>Telefono: <a href="tel:+393331234567">+39 333 1234567</a></li>
                     <li>Email: <a href="mailto:mario.rossi.stringer@example.com">mario.rossi.stringer@example.com</a><br></li>
                 </ul>
             </p>
             
+            <p>Seguimi sui social: 
+                <a href="https://www.facebook.com/mariorossistringer" target="_blank">Facebook</a>, 
+                <a href="https://www.instagram.com/mariorossistringer" target="_blank">Instagram</a>, 
+                <a href="https://www.twitter.com/mariorossistringer" target="_blank">X</a>
+            </p>
+
+            <!--
             {% if user.is_authenticated %}
             <a href="{% url 'profilo' %}" class="btn btn-primary">Vai al profilo</a>
             <a href="{% url 'prenotazioni-utente' %}" class="btn btn-success">Le tue Prenotazioni</a>
-            {% endif %}
-            
+            {% endif %} -->
+
             <a href="{% url 'servizi' %}" class="btn btn-secondary">Servizi</a>
-            <a href="{% url 'punti-ritiro' %}" class="btn btn-secondary">Punti Ritiro</a>
+            <a href="{% url 'punti-ritiro' %}" class="btn btn-secondary">Punti Ritiro</a> 
             
         </div>
     </div>
