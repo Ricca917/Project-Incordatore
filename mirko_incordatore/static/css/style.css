@@ -1,11 +1,9 @@
-/* ====================================== */
-/* Tema WIMBLEDON DARK - Notturno         */
-/* ====================================== */
+/* Tema Completo del Progetto*/
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #0f2a1d; /* verde molto scuro */
-    color: #e0e0e0; /* testo chiaro ma morbido */
+    background-color: #0f2a1d; 
+    color: #e0e0e0;
     margin: 0;
     padding: 0;
     background-image: linear-gradient(rgba(15,42,29,0.95), rgba(15,42,29,0.95)),
@@ -15,19 +13,19 @@ body {
 
 /* Titoli */
 h1, h2, h3, h4, h5, h6 {
-    color: #fdd835; /* giallo pallina per accenti */
+    color: #fdd835; 
     font-weight: 700;
     text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
 }
 
 /* Navbar */
 .navbar {
-    background-color: #0a1a12; /* verde ancora più scuro */
+    background-color: #0a1a12; 
     border-bottom: 2px solid #fdd835;
 }
 
 .navbar-brand, .nav-link {
-    color: #e0e0e0 !important; /* bianco morbido */
+    color: #e0e0e0 !important; 
     font-weight: 600;
 }
 
@@ -38,7 +36,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Container */
 .container {
     padding: 25px;
-    background-color: rgba(255,255,255,0.05); /* leggerissimo overlay chiaro */
+    background-color: rgba(255,255,255,0.05); 
     border-radius: 15px;
     margin-bottom: 25px;
     backdrop-filter: blur(5px);
@@ -65,7 +63,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Bottoni secondari */
 .btn-secondary {
-    background-color: rgba(255,255,255,0.15); /* bianco scuro trasparente */
+    background-color: rgba(255,255,255,0.15); 
     color: #e0e0e0;
     border: 2px solid #0a1a12;
     font-weight: bold;
@@ -83,7 +81,7 @@ h1, h2, h3, h4, h5, h6 {
 .card {
     border: 1px solid rgba(255,255,255,0.15);
     border-radius: 12px;
-    background-color: rgba(255,255,255,0.05); /* overlay scuro leggero */
+    background-color: rgba(255,255,255,0.05); 
     color: #e0e0e0;
     box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -103,22 +101,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .table thead {
-    background-color: #1b3a2a; /* verde scuro */
+    background-color: #1b3a2a; 
     color: #fdd835;
     font-weight: bold;
 }
 
-/* Form e istruzioni leggibili */
+/* Form e istruzioni */
 .form-label, .helptext, .registration-rules, .form-text {
-    color: #e0e0e0; /* bianco morbido */
+    color: #e0e0e0; 
 }
 
 input.form-control, textarea.form-control, select.form-control {
     border-radius: 8px;
     border: 1px solid #e0e0e0;
     padding: 10px;
-    background-color: rgba(255,255,255,0.15); /* chiaro ma scuro rispetto al tema */
-    color: #fdd835; /* testo facilmente leggibile */
+    background-color: rgba(255,255,255,0.15); 
+    color: #fdd835; 
 }
 
 input.form-control:focus, textarea.form-control:focus {
