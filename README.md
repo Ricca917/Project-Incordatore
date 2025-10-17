@@ -4,67 +4,59 @@
 
 ### 2. Descrizione del Progetto
 
-Applicazione Web che permette di prenotare incordature e luogo di ritiro
-
-in modo facile e intuitivo
+App Web che permette di prenotare incordature in modo facile e intuitivo
 
 ---
 
 ### 3. Target
 
-L’app si rivolge principalmente a:  
+L’app si rivolge a:  
 
-Giocatori di tennis amatoriali/professionisti che:
+- Giocatori di tennis amatoriali e professionisti che: 
 
-    - vogliono incordature professionali e veloci
+- vogliono incordature professionali, veloci e personalizzate
 
-    - chiedono punti di ritiro specifici
+- chiedono punti di ritiro specifici (tennis club)
 
 ---
 
 ### 4. Mission
 
-Avere una piattaforma che permette all'incordatore di gestire facilmente
+Piattaforma che permette all'incordatore di gestire facilmente le prenotazioni
 
-le prenotazioni, in modo da organizzare bene il lavoro e aumentare la produttività.
+in modo da organizzare bene il lavoro e aumentare la produttività
 
 Aiutare i clienti a prenotare incordatura,
 
-ritiro prodotto e pagamento in modo facile e intuivito
+ritiro prodotto e pagamento in modo facile e intuitivo
 
 ---
 
 ### 5. Funzionalità Principali (Roadmap)
 
-    - **Fase Uno:** Creazione del software gestionale  
+- ✅ **Fase Uno:**  Struttura base backend, Prenotazione, Servizi e Punti di Ritiro — *Completata*
 
-    - **Fase Due:** Inserimento ruoli Admin/utente/anonimo con relativi permessi
+- ✅ **Fase Due:** Login e Registrazione Utenti — *Completata*
+
+- ⏳ **Fase Tre** Inserimento sistema Pagamenti — *In Arrivo*
+
+- ⏳ **Fase Quattro** Sviluppo Frontend React — *In Arrivo*
+
+- ⏳ **Fase Cinque** Sviluppo App Mobile — *In Arrivo* 
 
 ---
 
 ### 6. Architettura Software
 
-    - **Frontend Web:** React  
+- **Frontend Web:** React  
 
-    - **Mobile:** React Native  
+- **Mobile:** React Native  
 
-    - **Backend:** Python 3.13.8 /Django   
+- **Backend:** Python 3.13.8 / Django   
 
-    - **Database:** SQLite 
+- **Database:** SQLite 
 
-    - **API REST** per la comunicazione tra frontend e backend
-
-    - **Ollama** per supportare  il cliente durante l'esperienza 
-
----
-
-### 7. Note
-
-    - V 1.0: sarà fatta esclusivamente coma backend Django
-
-    - V 2.0: frontend dedicato in React
-
-    - V x.0: versione mobile usando React Native
+- **API REST** per la comunicazione tra frontend e backend
 
 ---
 
@@ -72,7 +64,7 @@ ritiro prodotto e pagamento in modo facile e intuivito
 
 1. Clonare repository con *git clone git@github.com:Ricca917/Project-mirko-incordatore.git*
 
-2. Impostare e attivare il virtual environment con **python - m venv .venv** 
+2. Impostare e attivare il virtual environment con **python -m venv .venv** 
 
 3. Attivare il virtual environment con  **source .venv/Scripts/activate** (windows) 
 
@@ -85,18 +77,15 @@ ritiro prodotto e pagamento in modo facile e intuivito
 
 5. Creare le tabelle del Database con **python manage.py migrate**
 
-6. Recuperare i dati del Database dal backup con **python manage.py dumpdata > backup.json** 
+6. Popolare il Database usando i dati d'esempio con **python manage.py loaddata backup.json**
 
-7. Popolare il Database con **python manage.py loaddata backup.json**
+7. Entrare nella directory *Project-mirko-incordato/mirko_incordatore* e avviare il progetto con **python manage.py runserver**
 
-8. Entrare nella directory *Project-mirko-incordato/mirko_incordatore* e avviare il progetto con **python manage.py runserver**
-
-
-NOTE:
-    - il recupero del db viene fatto solamente perchè non ci sono dati sensibili al suo interno,
-
+ -  **NOTE**: Il recupero del db viene fatto solamente perchè non ci sono dati sensibili al suo interno,
     solamente dati inventati a scopo di test.
-    
     In una situazione reale questo tipo di pratica non verrà applicata
+
+    Il nome all'interno del progetto è uno di fantasia per via della privacy,
+    verranno usati quelli originali a sviluppo inoltrato
 
 ---
